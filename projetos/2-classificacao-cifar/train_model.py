@@ -35,13 +35,15 @@ n_val = int(len(x_train_full) * val_split)
 x_val, y_val = x_train_full[:n_val], y_train_full[:n_val]
 x_train, y_train = x_train_full[n_val:], y_train_full[n_val:]
 
-data_augmentation = keras.Sequential([
-    layers.RandomFlip("horizontal"),
-    layers.RandomRotation(0.08),
-    layers.RandomZoom(0.1),
-], name="data_augmentation")
+# ---------------------------------------------------------------------------
+# Data augmentation aplicada diretamente no grafo funcional (sem sub-modelo
+# Sequential aninhado) — evita o bug de serialização em .h5 onde o Keras
+# não reconstrói corretamente a conectividade de um modelo dentro de outro.
+# ---------------------------------------------------------------------------
 inputs = layers.Input(shape=(32, 32, 3))
-x = data_augmentation(inputs)
+x = layers.RandomFlip("horizontal", name="random_flip")(inputs)
+x = layers.RandomRotation(0.08, name="random_rotation")(x)
+x = layers.RandomZoom(0.1, name="random_zoom")(x)
 
 x = layers.Conv2D(32, (3, 3), padding="same", activation="relu")(x)
 x = layers.BatchNormalization()(x)
@@ -63,6 +65,7 @@ outputs = layers.Dense(10, activation="softmax")(x)
 
 model = keras.Model(inputs, outputs, name="cifar10_cnn")
 model.summary()
+
 model.compile(
     optimizer="adam",
     loss="sparse_categorical_crossentropy",
