@@ -23,9 +23,9 @@ Foi utilizada a Dynamic Range Quantization, aplicada via converter.optimizations
 ### 4️⃣ Resultados Obtidos
 
 
-Acurácia de validação final: 0.7862
+Acurácia de validação final: 0.7860
 Tamanho do model.h5: 4.2 MB
-Tamanho do model.tflite: 364 KB
+Tamanho do model.tflite: 362 KB
 Redução de tamanho obtida com a otimização foi de aproximadamente 11.5 vezes.
 
 ### 5️⃣ Comentários Adicionais (Opcional)
@@ -42,4 +42,4 @@ Amostra 2: predito=ship | real=ship
 Amostra 3: predito=ship | real=ship
 Amostra 4: predito=airplane | real=airplane
 Amostra 5: predito=frog | real=frog
-Todas as 5 amostras testadas foram classificadas corretamente. Vale destacar, porém, que esse resultado (5/5) não deve ser interpretado como acurácia de 100% do modelo — trata-se de uma amostra muito pequena para ter significância estatística. A métrica confiável para avaliar o desempenho real do modelo é a acurácia de validação de 0.7862, medida sobre o conjunto de validação completo. 
+Todas as 5 amostras testadas foram classificadas corretamente. Vale destacar, porém, que esse resultado (5/5) não deve ser interpretado como acurácia de 100% do modelo — trata-se de uma amostra muito pequena para ter significância estatística. A métrica confiável para avaliar o desempenho real do modelo é a acurácia de validação de 0.7860, medida sobre o conjunto de validação completo. 
