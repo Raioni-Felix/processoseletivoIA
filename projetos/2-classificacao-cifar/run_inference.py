@@ -1,4 +1,8 @@
 import os
+os.environ["TF_USE_LEGACY_KERAS"] = "1"
+
+import tensorflow as tf
+# resto do código continua igual
 import sys
 import io
 
@@ -9,7 +13,6 @@ if sys.stderr.encoding != 'utf-8':
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 import numpy as np
-import tensorflow as tf
 
 # ---------------------------------------------------------------------------
 # Projeto 2 — Inferência com o Modelo Otimizado (model.tflite)

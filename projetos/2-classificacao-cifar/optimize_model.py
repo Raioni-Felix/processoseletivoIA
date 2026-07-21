@@ -1,5 +1,7 @@
-import tensorflow as tf
 import os
+os.environ["TF_USE_LEGACY_KERAS"] = "1"
+
+import tensorflow as tf
 
 # ---------------------------------------------------------------------------
 # Projeto 2 — Otimização do Modelo (CIFAR-10)
